@@ -1,0 +1,52 @@
+/* Global CSS for NativeWind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* HireHub Ethiopia Employer Mobile - Theme Variables */
+:root {
+  --background: 0 0% 100%;
+  --foreground: 140 50% 10%;
+  --card: 0 0% 98%;
+  --card-foreground: 140 50% 10%;
+  --popover: 0 0% 98%;
+  --popover-foreground: 140 50% 10%;
+  --primary: 140 80% 40%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 140 10% 90%;
+  --secondary-foreground: 140 50% 10%;
+  --muted: 140 5% 95%;
+  --muted-foreground: 140 20% 40%;
+  --accent: 140 70% 50%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 85% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 140 10% 85%;
+  --input: 0 0% 98%;
+  --ring: 140 80% 40%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 140 50% 5%;
+  --foreground: 0 0% 98%;
+  --card: 140 50% 8%;
+  --card-foreground: 0 0% 95%;
+  --popover: 140 50% 8%;
+  --popover-foreground: 0 0% 95%;
+  --primary: 140 80% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 140 10% 12%;
+  --secondary-foreground: 0 0% 90%;
+  --muted: 140 5% 10%;
+  --muted-foreground: 140 5% 65%;
+  --accent: 140 70% 60%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 85% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 140 10% 15%;
+  --input: 140 50% 8%;
+  --ring: 140 80% 50%;
+}
+
+

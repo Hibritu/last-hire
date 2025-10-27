@@ -1,0 +1,21 @@
+{
+  "name": "axios-context7-example",
+  "version": "1.0.0",
+  "description": "An example demonstrating how to use Axios based on Context7 documentation",
+  "main": "axios-example.js",
+  "type": "module",
+  "scripts": {
+    "start": "node axios-example.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.9"
+  },
+  "keywords": [
+    "axios",
+    "http",
+    "client",
+    "example"
+  ],
+  "author": "Context7 Example",
+  "license": "MIT"
+}

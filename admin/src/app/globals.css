@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* You can add global CSS variables or base styles below if needed */
+:root {
+  /* Theme tokens can go here if you add shadcn variables later */
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+}

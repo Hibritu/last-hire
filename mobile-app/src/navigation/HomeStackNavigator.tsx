@@ -1,0 +1,37 @@
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from '../screens/HomeScreen';
+import ApplyWithCoverLetterScreen from '../screens/ApplyWithCoverLetterScreen';
+import ViewJobScreen from '../screens/ViewJobScreen';
+
+export type RootStackParamList = {
+  Home: undefined;
+  ApplyWithCoverLetter: { jobId: string; jobTitle: string };
+  ViewJob: { jobId: string; jobTitle: string };
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+const HomeStackNavigator = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ApplyWithCoverLetter"
+        component={ApplyWithCoverLetterScreen}
+        options={{ title: 'Apply with Cover Letter' }}
+      />
+      <Stack.Screen
+        name="ViewJob"
+        component={ViewJobScreen}
+        options={({ route }) => ({ title: route.params.jobTitle })}
+      />
+    </Stack.Navigator>
+  );
+};
+
+export default HomeStackNavigator;

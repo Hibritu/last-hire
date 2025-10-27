@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: hirehub
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/hirehub?sslmode=disable
+      PORT: 8080
+      CHAPA_PUBLIC_KEY: ${CHAPA_PUBLIC_KEY:-}
+      CHAPA_SECRET_KEY: ${CHAPA_SECRET_KEY:-}
+      CHAPA_BASE_URL: ${CHAPA_BASE_URL:-https://api.chapa.co}
+      RETURN_URL: ${RETURN_URL:-http://localhost:3000/payments/return}
+      CALLBACK_URL: ${CALLBACK_URL:-http://localhost:8080/payments/confirm}
+    ports:
+      - "8080:8080"
+
+volumes:
+  db_data: 

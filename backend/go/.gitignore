@@ -1,0 +1,30 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+
+# Go build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go module cache
+/vendor/
+
+# IDE / editor stuff
+.vscode/
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# Node/npm if you ever mix frontend
+node_modules/
+dist/

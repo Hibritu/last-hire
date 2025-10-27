@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "HireHub Employer",
+    "slug": "employer-connect-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#22c55e"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.hirehub.employer"
+    },
+    "android": {
+      "package": "com.hirehub.employer"
+    },
+    "plugins": [
+      "expo-secure-store"
+    ]
+  }
+}
+

@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* HireHub Ethiopia Employer Portal - Unified Theme Design System
+Matches Job Seeker Portal theme for consistency across platform.
+All colors MUST be HSL. Green theme for Ethiopian branding.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 140 50% 10%;
+    --card: 0 0% 98%;
+    --card-foreground: 140 50% 10%;
+    --popover: 0 0% 98%;
+    --popover-foreground: 140 50% 10%;
+    --primary: 140 80% 40%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 140 80% 50%;
+    --primary-dark: 140 80% 30%;
+    --secondary: 140 10% 90%;
+    --secondary-foreground: 140 50% 10%;
+    --muted: 140 5% 95%;
+    --muted-foreground: 140 20% 40%;
+    --accent: 140 70% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 140 10% 85%;
+    --input: 0 0% 98%;
+    --input-border: 140 10% 80%;
+    --ring: 140 80% 40%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 140 50% 10%;
+    --sidebar-primary: 140 80% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 140 10% 90%;
+    --sidebar-accent-foreground: 140 50% 10%;
+    --sidebar-border: 140 10% 85%;
+    --sidebar-ring: 140 80% 40%;
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  }
+
+  .dark {
+    --background: 140 50% 5%;
+    --foreground: 0 0% 98%;
+    --card: 140 50% 8%;
+    --card-foreground: 0 0% 95%;
+    --popover: 140 50% 8%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 140 80% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 140 80% 60%;
+    --primary-dark: 140 80% 40%;
+    --secondary: 140 10% 12%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 140 5% 10%;
+    --muted-foreground: 140 5% 65%;
+    --accent: 140 70% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 140 10% 15%;
+    --input: 140 50% 8%;
+    --input-border: 140 10% 20%;
+    --ring: 140 80% 50%;
+    --sidebar-background: 140 50% 5%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 140 80% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 140 10% 12%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 140 10% 15%;
+    --sidebar-ring: 140 80% 50%;
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

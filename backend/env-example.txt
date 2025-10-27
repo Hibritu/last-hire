@@ -1,0 +1,35 @@
+# Database Configuration
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=hirehub
+DB_USER=postgres
+DB_PASSWORD=your_password
+
+# Server Configuration
+PORT=4000
+NODE_ENV=development
+
+# JWT Configuration
+JWT_SECRET=your_super_secret_jwt_key_here
+JWT_EXPIRES_IN=7d
+
+# Email Configuration (Gmail)
+GMAIL_USER=your-email@gmail.com
+GMAIL_APP_PASSWORD=your-gmail-app-password
+
+# Frontend URL (for email links)
+FRONTEND_URL=http://localhost:8080
+
+# Backend URL (for password reset links)
+BACKEND_URL=http://localhost:4000
+
+# Chat Encryption Key (generate a strong random key)
+CHAT_ENCRYPTION_KEY=your_super_secret_chat_encryption_key_32_chars_minimum
+
+# Payment Configuration (Chapa)
+CHAPA_SECRET_KEY=your_chapa_secret_key_here
+CHAPA_PUBLIC_KEY=your_chapa_public_key_here
+
+# File Upload Configuration
+MAX_FILE_SIZE=10485760
+UPLOAD_DIR=uploads

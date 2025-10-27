@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Emergency Check</title>
+  <style>
+    body { font-family: monospace; padding: 20px; background: #000; color: #0f0; }
+    button { background: #0f0; color: #000; padding: 15px 30px; border: none; cursor: pointer; margin: 10px; font-size: 16px; }
+    pre { background: #222; padding: 15px; border: 2px solid #0f0; overflow-x: auto; }
+    .error { color: #f00; }
+    .success { color: #0f0; }
+  </style>
+</head>
+<body>
+  <h1>🚨 EMERGENCY DEBUG</h1>
+  
+  <button onclick="checkNow()">CHECK NOW</button>
+  <button onclick="clearAndRelogin()">CLEAR & RE-LOGIN</button>
+  
+  <div id="output"></div>
+
+  <script>
+    async function checkNow() {
+      const output = document.getElementById('output');
+      output.innerHTML = '<h2>Checking...</h2>';
+
+      // 1. Check localStorage token
+      const token = localStorage.getItem('token');
+      let html = '<h2>1. LocalStorage Token:</h2>';
+      
+      if (!token) {
+        html += '<p class="error">❌ NO TOKEN FOUND!</p>';
+      } else {
+        html += '<p class="success">✅ Token exists</p>';
+        html += '<pre>' + token.substring(0, 100) + '...</pre>';
+        
+        try {
+          const payload = JSON.parse(atob(token.split('.')[1]));
+          html += '<h3>Token Payload:</h3>';
+          html += '<pre>' + JSON.stringify(payload, null, 2) + '</pre>';
+          
+          const now = Math.floor(Date.now() / 1000);
+          if (payload.exp < now) {
+            html += '<p class="error">⚠️ TOKEN EXPIRED!</p>';
+          } else {
+            html += '<p class="success">✅ Token valid until: ' + new Date(payload.exp * 1000).toLocaleString() + '</p>';
+          }
+        } catch (e) {
+          html += '<p class="error">❌ Cannot parse token: ' + e.message + '</p>';
+        }
+      }
+
+      // 2. Test backend health
+      html += '<h2>2. Backend Health:</h2>';
+      try {
+        const healthRes = await fetch('/health');
+        html += '<p class="success">✅ Backend responds: ' + healthRes.status + '</p>';
+      } catch (e) {
+        html += '<p class="error">❌ Backend down: ' + e.message + '</p>';
+      }
+
+      // 3. Test authenticated endpoint
+      html += '<h2>3. Test /users/me (with token):</h2>';
+      if (token) {
+        try {
+          const userRes = await fetch('/users/me', {
+            headers: { 'Authorization': 'Bearer ' + token }
+          });
+          
+          if (userRes.ok) {
+            const userData = await userRes.json();
+            html += '<p class="success">✅ Authenticated! User: ' + userData.email + '</p>';
+          } else {
+            const errorData = await userRes.json();
+            html += '<p class="error">❌ Auth FAILED! Status: ' + userRes.status + '</p>';
+            html += '<pre>' + JSON.stringify(errorData, null, 2) + '</pre>';
+            html += '<p class="error">⚠️ THIS IS WHY YOU\'RE BEING LOGGED OUT!</p>';
+          }
+        } catch (e) {
+          html += '<p class="error">❌ Request failed: ' + e.message + '</p>';
+        }
+      } else {
+        html += '<p class="error">No token to test with</p>';
+      }
+
+      output.innerHTML = html;
+    }
+
+    function clearAndRelogin() {
+      localStorage.clear();
+      alert('LocalStorage cleared! Redirecting to login...');
+      window.location.href = 'http://localhost:3000/debug-auth.html';
+    }
+
+    // Auto-run on load
+    window.addEventListener('load', checkNow);
+  </script>
+</body>
+</html>
+
