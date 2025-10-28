@@ -1,0 +1,48 @@
+# HireHub Ethiopia - Render Deployment Configuration
+# This file configures the deployment settings for Render.com
+
+# Build command for Render
+build_command: |
+  # Install dependencies for backend
+  cd backend && npm install
+  
+  # Install dependencies for frontend applications
+  cd ../Frontend/USER\(dagi\) && npm install
+  cd ../employer-connect-pro-main && npm install
+  cd ../seekr-companion-main && npm install
+  
+  # Install dependencies for admin panel
+  cd ../../admin && npm install
+  
+  # Build frontend applications
+  cd ../Frontend/USER\(dagi\) && npm run build
+  cd ../employer-connect-pro-main && npm run build
+  cd ../seekr-companion-main && npm run build
+  
+  # Build admin panel
+  cd ../../admin && npm run build
+
+# Start command for Render
+start_command: |
+  cd backend && npm start
+
+# Environment variables (will be set in Render dashboard)
+env_vars:
+  - NODE_ENV=production
+  - PORT=10000
+  - DATABASE_URL=${DATABASE_URL}
+  - JWT_SECRET=${JWT_SECRET}
+  - JWT_EXPIRES_IN=7d
+  - GMAIL_USER=${GMAIL_USER}
+  - GMAIL_APP_PASSWORD=${GMAIL_APP_PASSWORD}
+  - CHAT_ENCRYPTION_KEY=${CHAT_ENCRYPTION_KEY}
+  - CHAPA_SECRET_KEY=${CHAPA_SECRET_KEY}
+  - FRONTEND_URL=${FRONTEND_URL}
+  - BACKEND_URL=${BACKEND_URL}
+  - CORS_ORIGINS=${CORS_ORIGINS}
+
+# Health check endpoint
+health_check_path: /health
+
+# Auto-deploy settings
+auto_deploy: true
