@@ -8,6 +8,7 @@
     "start": "node axios-example.js"
   },
   "dependencies": {
+    "@getbrevo/brevo": "^3.0.1",
     "axios": "^1.7.9"
   },
   "keywords": [
