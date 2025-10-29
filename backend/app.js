@@ -20,7 +20,12 @@ const allowedOrigins = [
   'http://127.0.0.1:4000', 'http://127.0.0.1:5173', 'http://localhost:8081',
   'http://127.0.0.1:8081', 'http://localhost:8000', 'http://127.0.0.1:8000',
   'http://localhost:3001', 'http://127.0.0.1:3001', // Admin Panel
-  'http://localhost:3002', 'http://127.0.0.1:3002'  // Auth Hub
+  'http://localhost:3002', 'http://127.0.0.1:3002' ,
+  'https://last-hire-eft1-1hj3s1cld-hibritus-projects.vercel.app', // Your Vercel URL
+  'https://hirehub-auth.vercel.app', // Your Auth Hub (if different)
+  'https://hirehub-jobseeker.vercel.app', // Job Seeker Portal
+  'https://hirehub-employer.vercel.app', // Employer Portal
+  'https://hirehub-admin.vercel.app' // Auth Hub
 ];
 app.use(cors({
   origin: (origin, callback) => {
